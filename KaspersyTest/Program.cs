@@ -13,7 +13,7 @@ namespace KaspersyTest
 		{
 			var data = SampleData(100, 10);
 
-			PrintResult(OptimizedGetEqualPairs(data, 15), data, 15);
+			PrintResult(GetEqualPairs(data, 15), data, 15);
 			Console.ReadLine();
 		}
 
@@ -34,19 +34,7 @@ namespace KaspersyTest
 			}
 		}
 
-		static IEnumerable<Tuple<int, int>> SimpleGetEqualPairs(int[] arr, int X)
-		{
-			for (int i = 0; i < arr.Length; i++)
-			{
-				for (int j = 0; j < arr.Length; j++)
-				{
-					if (i == j) continue;
-					if (arr[i] + arr[j] == X) yield return new Tuple<int, int>(arr[i], arr[j]);
-				}
-			}
-		}
-
-		static IEnumerable<Tuple<int, int>> OptimizedGetEqualPairs(int[] arr, int X)
+		static IEnumerable<Tuple<int, int>> GetEqualPairs(int[] arr, int X)
 		{
 			Dictionary<int, List<int>> dict = new Dictionary<int, List<int>>();
 			for (int i = 0; i < arr.Length; i++)
